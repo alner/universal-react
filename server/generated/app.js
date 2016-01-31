@@ -59,6 +59,10 @@ module.exports =
 
 	__webpack_require__(2);
 
+	var _hello = __webpack_require__(6);
+
+	var _hello2 = _interopRequireDefault(_hello);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -82,7 +86,7 @@ module.exports =
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Hello from React!'
+	        _react2.default.createElement(_hello2.default, null)
 	      );
 	    }
 	  }]);
@@ -103,6 +107,33 @@ module.exports =
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Hello from React!'
+	  );
+	};
 
 /***/ }
 /******/ ]);
