@@ -1,28 +1,26 @@
 import React, {Component} from 'react'
 import './style.less'
-import Hello from 'components/hello'
 import EventsList from 'components/eventsList'
-
-let events = [
-  {
-    name: 'Test event',
-    description: 'Just description for test event'
-  },
-  {
-    name: 'React event',
-    description: 'Just another React event'
-  },
-  {
-    name: 'Redux',
-    description: 'Redux internals'
-  }
-];
+import * as EventsStore from 'stores/eventsStore'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      events: EventsStore.getEvents()
+    }
+  }
+
+  componentDidMount() {
+    EventsStore.addListener((events) => {
+      this.setState({events});
+    });
+  }
+
   render() {
     return (
       <div>
-        <EventsList events={events} />
+        <EventsList events={this.state.events} />
       </div>
     )
   }

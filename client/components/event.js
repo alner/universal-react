@@ -5,10 +5,10 @@ export default class Event extends Component {
     super(props)
   }
   render() {
-    let { name, description } = this.props;
+    let { id, name, description } = this.props;
     return (
     <div>
-      <h1>{name}</h1>
+      <h1>{id}:{name}</h1>
       <div>{description}</div>
     </div>
     )

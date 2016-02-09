@@ -73,6 +73,7 @@ const statOptions = {
 
 const devServer = new WebpackDevServer(webpack(devConfig), {
   hot: true,
+  headers: { "Access-Control-Allow-Origin": "*" },
   //inline: true,
   stats: statOptions
 });

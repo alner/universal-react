@@ -1,14 +1,22 @@
 import uuid from 'node-uuid'
-import dispatcher from '../dispatcher'
+import * as dispatcher from 'dispatcher/index'
 
 let listeners = []
-let events = new Map()
+let events = new Map([
+  [1, {id: 1, name: 'Test', description: 'Test description'}],
+  [2, {id: 2, name: 'React', description: 'Learn React'}],
+  [3, {id: 3, name: 'Yes, Redux!', description: 'Try Redux'}]
+])
 
 export function getEvents() {
-  return events
+  let data = []
+  for (let item of events.values())
+    data.push(item)
+
+  return data
 }
 
-export function onChange(listener) {
+export function addListener(listener) {
   listeners.push(listener)
 }
 
@@ -25,11 +33,11 @@ function removeEvent(id) {
 
 function triggerListeners() {
   listeners.forEach(listener => {
-    listener(events)
+    listener(getEvents())
   })
 }
 
-dispatcher.register( payload => {
+dispatcher.register((payload) => {
   let split = payload.type.split(':')
   if (split[0] === 'event') {
     switch(split[1]) {
